@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+ <mapper namespace="com.softtron.pinmaodd.daos.TProductDao">
+ <!-- 查询所有的商品 -->
+<select id="findallProduct"  resultType="com.softtron.pinmaodd.demos.TProduct">
+	select * from t_product
+</select>
+<delete id="deleteProduct" parameterType="java.lang.Integer">
+	delete from t_product where productId=#{productId}
+</delete>
+<update id="updateProduct" parameterType="com.softtron.pinmaodd.demos.TProduct">
+	update t_product set productName=#{productName},productPrice=#{productPrice} where productId=#{productId}
+</update>
+<insert id="insertProduct" parameterType="com.softtron.pinmaodd.demos.TProduct" useGeneratedKeys="true"  keyProperty="productId">
+ insert into t_product(productId,productName,productPrice) value (#{productId},#{productName},#{productPrice})
+</insert>
+ 
+ 
+</mapper>
